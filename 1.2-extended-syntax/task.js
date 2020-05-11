@@ -7,12 +7,12 @@ function getResult(a,b,c){
   if (d > 0){
     x1 = (-b - Math.sqrt(d)) / 2 * a;
     x2 = (-b + Math.sqrt(d)) / 2 * a;
-    return [x1, x2]
+    return [x1, x2];
   } else if (d == 0){
     x1 = -b / 2 * a;
-    return [x1]
+    return [x1];
   } else {
-    return []
+    return [];
   }
 }
 
