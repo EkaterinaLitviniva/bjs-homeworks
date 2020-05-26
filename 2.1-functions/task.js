@@ -26,12 +26,11 @@ function showSolutionsMessage(a,b,c){
     }
 }
 
-function ge{tAverageScore(data){
-    data = new Array{
-        name,
-        mark,
-}
-return data;
+function getAverageScore(data){
+  const inputData = data;
+  const averageMarks 
+
+return averageMarks;
 }
 
 function getAverageMark(marks){
@@ -42,6 +41,15 @@ function getAverageMark(marks){
     for (let i = 0; i <= marks.length-1; i++){
         summ += Number(marks[i]);
         } 
-    return Math.round(summ / marks.length);
+    return summ / marks.length;
 }
+}
+
+function getPersonData(secretData){
+  const person = secretData;
+
+}
+
+function getDecodedValue(secret){
+
 }
