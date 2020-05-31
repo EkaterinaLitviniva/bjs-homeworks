@@ -20,9 +20,9 @@ function showSolutionsMessage(a,b,c){
     let result = getSolutions(a,b,c);
     console.log(`Вычисляем корни квадратного уравнения ${a}x² + ${b}x + ${c}. \nЗначение дискриминанта: ${result.D}`)
     if (result.D > 0){
-        return `Уравнение имеет два корня. X₁ = ${result.roots.x1}, X₂ = ${result.roots.x2}`
+        return `Уравнение имеет два корня. X₁ = ${result.roots[0]}, X₂ = ${result.roots[1]}`
      }else if (result.D == 0){
-       return `Уравнение имеет один корень X₁ = ${result.roots.x1}`
+       return `Уравнение имеет один корень X₁ = ${result.roots[0]}`
     }else {
         return `Уравнение не имеет вещественных корней.`
     }
