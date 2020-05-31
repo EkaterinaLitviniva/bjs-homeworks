@@ -2,9 +2,11 @@
 
 function getSolutions(a,b,c){
   const D = Math.pow(b, 2) - 4 * a * c;
+  let x1;
+  let x2;
   if (D > 0){
-        x1 = (-b + Math.sqrt(d)) / 2 * a;
-        x2 = (-b - Math.sqrt(d)) / 2 * a;
+        x1 = (-b + Math.sqrt(D)) / 2 * a;
+        x2 = (-b - Math.sqrt(D)) / 2 * a;
     return {D: D, roots: [x1,x2]};
   } else if (D == 0){
     x1 = -b / (2 * a);
@@ -27,10 +29,12 @@ function showSolutionsMessage(a,b,c){
 }
 
 function getAverageScore(data){
-  const inputData = data;
-  const averageMarks 
-
-return averageMarks;
+    let result = new Object();
+    for (let i in data){
+      result[i] = getAverageMark(data[i]);
+    }
+    result.average = getAverageMark(Object.values(result));
+return result;
 }
 
 function getAverageMark(marks){
@@ -45,11 +49,3 @@ function getAverageMark(marks){
 }
 }
 
-function getPersonData(secretData){
-  const person = secretData;
-
-}
-
-function getDecodedValue(secret){
-
-}
