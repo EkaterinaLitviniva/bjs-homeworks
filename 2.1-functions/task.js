@@ -48,4 +48,17 @@ function getAverageMark(marks){
     return summ / marks.length;
 }
 }
+function getPersonData(secretData){
+  let result = new Object();
+  for (let i in secretData){
+        result[i] = getDecodedValue(secretData[i]);
+      }
+  
+  return result;
+  }
+  
+  function getDecodedValue(secret){
+  let result = (secret == 0) ? "Родриго" : "Эмильо";
+  return result;
+  }
 
