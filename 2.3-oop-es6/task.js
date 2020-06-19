@@ -4,6 +4,7 @@ class Weapon {
         this.attack = weaponObj.attack;
         this.durability = weaponObj.durability;
         this.range = weaponObj.range;
+        this.startDurability = weaponObj.durability;
         }
     takeDamage(damage) {
         this.durability -= damage;
@@ -16,6 +17,7 @@ class Weapon {
             return 0;
            } else {  
             return (this.attack/2);
+           }
     }
     isBroken() {
         if (this.durability > 0) {
@@ -84,9 +86,9 @@ class Sword extends Weapon {
   class LongBow extends Bow {
     constructor (){
       super();
-      this.name = 'Длнный лук';
-      this.attack = 15;
-      this.range = 4;
+      name = 'Длнный лук';
+      attack = 15;
+      range = 4;
     }
   }
   class Axe extends Sword {
@@ -117,12 +119,12 @@ class Sword extends Weapon {
     addGrade(grade, subject) {
       if (typeof(grade) != "number" || grade < 1 || grade > 5) {
          alert(`Вы пытались поставить оценку ${grade} по предмету ${subject}. Допускаются только числа от 1 до 5`)
-         return this.marks.subject.lenght;
-      } else if (typeof(this.marks.subject) != 'undefined') {
+         //return this.marks.subject.lenght;
+      } else if (typeof(this.marks.subject) == 'undefined') {
           this.marks.subject = new Array();
       }
       this.marks.subject.push(grade);
-      return this.marks.subject.lenght;
+      //return this.marks.subject.lenght;
     }
   }
     
