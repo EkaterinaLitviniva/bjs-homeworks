@@ -86,9 +86,9 @@ class Sword extends Weapon {
   class LongBow extends Bow {
     constructor (){
       super();
-      name = 'Длнный лук';
-      attack = 15;
-      range = 4;
+      this.name = 'Длнный лук';
+      this.attack = 15;
+      this.range = 4;
     }
   }
   class Axe extends Sword {
@@ -119,12 +119,31 @@ class Sword extends Weapon {
     addGrade(grade, subject) {
       if (typeof(grade) != "number" || grade < 1 || grade > 5) {
          alert(`Вы пытались поставить оценку ${grade} по предмету ${subject}. Допускаются только числа от 1 до 5`)
-         //return this.marks.subject.lenght;
-      } else if (typeof(this.marks.subject) == 'undefined') {
-          this.marks.subject = new Array();
+         return this.marks[subject].length;
+      } else if (typeof(this.marks[subject]) == 'undefined') {
+          this.marks[subject] = new Array();
       }
-      this.marks.subject.push(grade);
-      //return this.marks.subject.lenght;
+      this.marks[subject].push(grade);
+      return this.marks[subject].length;
+    }
+    getAverageBySubject(subject) {
+      if (subject == 0 || subject == 'undefined') {
+        return 0;
+      } else {
+        let summ = 0;
+        for (let i = 0; i <= this.marks[subject].length - 1; i++){
+          summ += this.marks[subject][i];
+          } 
+        return summ / this.marks[subject].length;
+      }
+    }
+    getTotalAverage(){
+        let sum = 0;
+        let arrSubjects = Object.getOwnPropertyNames(this.marks);
+      for (let i in arrSubjects){
+         sum += this.getAverageBySubject(arrSubjects[i]);
+      }
+        return sum / arrSubjects.length;
     }
   }
     
