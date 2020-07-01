@@ -1,49 +1,52 @@
 function parseCount(count) {
     if(isNaN(parseInt(count))) {
-      countError = new Error("Невалидное значение");
+      const countError = new Error("Невалидное значение");
       throw countError;
     }
     return parseInt(count);
 }
   
-  let countError;
-  
 function validateCount(count) {
   try {
     return parseCount(count);
-  } catch(e) {
+  } catch(countError) {
     return countError;
   }
 }
 
 class Triangle {
   constructor(a,b,c) {
-      this.a = a;
-      this.b = b;
-      this.c = c;
-      this.p = this.getPerimeter(a,b,c);
-      this.s = Number(this.getArea(a,b,c));
-      if((a+b) < c) {
-        throw new Error ('Треугольник с такими сторонами не существует')
-      }
+    this.a = a;
+    this.b = b;
+    this.c = c;
+    if((a+b) < c) {
+      const triangleError = new Error ('Треугольник с такими сторонами не существует');
+      throw triangleError;
     }
-    getPerimeter() { 
-       let p = (this.a + this.b + this.c);
-        return p;
+  }
+  getPerimeter(a,b,c) { 
+    if (a || b || c === undefined) {
+      return 'Ошибка! Неправильный треугольник';
     }
-    getArea() {
-      let p2 = (this.a + this.b + this.c) / 2;
-      let s = Math.sqrt(p2 * (p2 - this.a) * (p2 - this.b) * (p2 - this.c));
-      return s.toFixed(3);
+      return (this.a + this.b + this.c);
+  }
+  getArea(a,b,c) {
+    if (a || b || c === undefined) {
+      return 'Ошибка! Неправильный треугольник';
     }
+    let p = (this.a + this.b + this.c) / 2;
+    let s = Number(Math.sqrt(p * (p - this.a) * (p - this.b) * (p - this.c)));
+    return s.toFixed(3);
+  }
 }
-  
+
 function getTriangle(a,b,c) {
   try {
     return new Triangle(a,b,c);
-  } catch(e) {
-    
-    return 'Ошибка! Треугольник не существует';
-  }
-}
-  
+  } catch(triangleError) {
+    let t = new Triangle();
+    t.getPerimeter();
+    t.getArea();
+    return  t;
+    }
+   }
