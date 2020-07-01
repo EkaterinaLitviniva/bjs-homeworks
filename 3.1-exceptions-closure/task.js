@@ -19,7 +19,7 @@ class Triangle {
     this.a = a;
     this.b = b;
     this.c = c;
-    if((a+b) < c) {
+    if((a+b) < c || (a+c) < b ||| (b+c) < a) {
       const triangleError = new Error ('Треугольник с такими сторонами не существует');
       throw triangleError;
     }
