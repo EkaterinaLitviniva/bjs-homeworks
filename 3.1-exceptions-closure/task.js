@@ -45,8 +45,6 @@ function getTriangle(a,b,c) {
     return new Triangle(a,b,c);
   } catch(triangleError) {
     let t = new Triangle();
-    t.getPerimeter();
-    t.getArea();
     return  t;
     }
    }
