@@ -22,10 +22,9 @@ function memorize(fn, limit){
        throw new Error("Не задано число сохраняемых значений");;
        };
     return  function innerFunc(...args){
-      console.log(`длина массива=${memory.length}`);
       let exist = memory.find(item => compareArrays(item.args,args));
       if (exist != undefined){
-       return exist.result
+        return exist.result
       } else if (limit == memory.length-1) {
         memory.shift();
       } else {
@@ -35,3 +34,19 @@ function memorize(fn, limit){
     };
 };
 
+function testCase(testFunction,timer){
+    array = [ [1,2,3], [1,2], [1,2,3], [1,2], [9,5,2,4],[15,26,178,4],[2],[67,345,768,45,34,2] ];
+    let  i = 0;
+    const summa = memorize(sum,100);
+    while (i != 15){
+      array.forEach(function(item, i, arr){summa(item);});
+      i++
+    };
+};   
+  
+  console.time('timer1');
+  testCase(sum,'timer1');
+  console.timeEnd('timer1');
+  
+  // sum timer1: 816.444ms
+  //msum timer1: 6.525ms
