@@ -25,7 +25,7 @@ function memorize(fn, limit){
       let exist = memory.find(item => compareArrays(item.args,args));
       if (exist != undefined){
         return exist.result
-      } else if (limit == memory.length-1) {
+      } else if (limit == memory.length) {
         memory.shift();
       } else {
         memory.push({args: args, result: fn(...args)});
