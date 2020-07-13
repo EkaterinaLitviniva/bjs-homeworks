@@ -23,23 +23,23 @@ function memorize(fn, limit){
        };
     return  function innerFunc(...args){
       let exist = memory.find(item => compareArrays(item.args,args));
-      if (exist != undefined){
+      if (exist){
         return exist.result
       } else if (limit == memory.length) {
         memory.shift();
-      } else {
-        memory.push({args: args, result: fn(...args)});
+      };
+      memory.push({args: args, result: fn(...args)});
         return memory[memory.length-1].result
-      } 
+      
     };
 };
 
 function testCase(testFunction,timer){
-    array = [ [1,2,3], [1,2], [1,2,3], [1,2], [9,5,2,4],[15,26,178,4],[2],[67,345,768,45,34,2] ];
+    array = [[1,2,3],[1,2],[1,2,3],[1,2],[9,5,2,4],[15,26,178,4],[2],[67,345,768,45,34,2]];
     let  i = 0;
     const summa = memorize(sum,100);
     while (i != 15){
-      array.forEach(function(item, i, arr){summa(item);});
+      array.forEach(function(item, i, ...arr){summa(item);});
       i++
     };
 };   
@@ -48,5 +48,5 @@ function testCase(testFunction,timer){
   testCase(sum,'timer1');
   console.timeEnd('timer1');
   
-  // sum timer1: 816.444ms
-  //msum timer1: 6.525ms
+  //sum timer1: 853.102ms
+  //msum timer1: 7.427ms
