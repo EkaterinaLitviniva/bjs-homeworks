@@ -6,7 +6,7 @@ class AlarmClock {
         this.alarmCollection = [];
         this.timerId = [];
     }
-    aaddClock(time, callback, id){
+    addClock(time, callback, id){
         if (id === undefined) {
       console.error('Не задан идентификатор таймера');
       return;
@@ -21,15 +21,14 @@ class AlarmClock {
     removeClock(id){
         const alarm = this.id.filter(al => al.id === id)
         if(alarm){
-            delete this.id[alarm];
+            this.alarmCollection.splice(this.alarmCollection.findIndex(item => item.id==id),1);
             return 'Звонок удален';
         }
          return 'Звонок не найден';
     };
 
     getCurrentFormattedTime(){
-        let now = new Date();
-        return `${now.getHours()}:${now.getMinutes()}`;
+        return new Date().toLocaleTimeString().slice(0,-3);
     };
 
     start(){
@@ -40,8 +39,8 @@ class AlarmClock {
     };
 
     stop(){
-        if (this.timerID !== null) {
-            clearInterval(this.timerID);
+        if (this.timerId !== null) {
+            clearInterval(this.timerId);
             this.timerId = null;
         }
     };
@@ -51,7 +50,7 @@ class AlarmClock {
       };
 
     clearAlarms() {
-        this.stop;
+        this.stop();
         this.alarmCollection = [];
     };
 };
